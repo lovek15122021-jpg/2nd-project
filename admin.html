@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="admin-header">
+        <h1>👨‍💻 Admin Panel</h1>
+
+        <div class="admin-login" id="adminLoginBox">
+            <input type="password" id="adminPass" placeholder="Admin Password">
+            <button id="adminLoginBtn">Login</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="adminContent" style="display:none;">
+
+        <!-- FILTER -->
+        <div class="filter-section">
+            <input type="date" id="filterDate">
+            <button id="filterBtn">Filter by Date</button>
+            <button id="showAllBtn">Show All</button>
+        </div>
+
+        <!-- ADD EMPLOYEE -->
+        <div class="add-employee">
+            <h3>Add New Employee</h3>
+
+            <div class="input-row">
+                <input type="text" id="newEmpId" placeholder="EMP001">
+                <input type="text" id="newEmpName" placeholder="Employee Name">
+                <input type="password" id="newEmpPass" placeholder="Set Password">
+
+                <button id="addEmpBtn" style="background:#28a745;">
+                    Add Employee
+                </button>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-container">
+            <table id="employeesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Login</th>
+                        <th>Logout</th>
+                        <th style="color:#2196F3;">Manual Break</th>
+                        <th style="color:#f44336;">Auto Idle</th>
+                        <th style="color:#28a745;">Net Work Hours</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- JS (bottom me hi rakho) -->
+<script src="database.js"></script>
+<script src="admin-script.js"></script>
+
+<!-- SAFE EVENT BINDING -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // LOGIN
+    let loginBtn = document.getElementById("adminLoginBtn");
+    if (loginBtn) {
+        loginBtn.addEventListener("click", function () {
+            if (typeof adminLogin === "function") {
+                adminLogin();
+            }
+        });
+    }
+
+    // FILTER
+    let filterBtn = document.getElementById("filterBtn");
+    if (filterBtn) {
+        filterBtn.addEventListener("click", function () {
+            if (typeof filterData === "function") {
+                filterData();
+            }
+        });
+    }
+
+    // SHOW ALL
+    let showAllBtn = document.getElementById("showAllBtn");
+    if (showAllBtn) {
+        showAllBtn.addEventListener("click", function () {
+            if (typeof showAllData === "function") {
+                showAllData();
+            }
+        });
+    }
+
+    // ADD EMPLOYEE
+    let addBtn = document.getElementById("addEmpBtn");
+    if (addBtn) {
+        addBtn.addEventListener("click", function () {
+            if (typeof addEmployee === "function") {
+                addEmployee();
+            }
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>
